@@ -64,7 +64,9 @@ export function useProgress() {
     setSnapshot(state);
     const listener = () => setSnapshot({ ...state });
     listeners.add(listener);
-    return () => listeners.delete(listener);
+    return () => {
+      listeners.delete(listener);
+    };
   }, []);
 
   const total = allActivities.length;
@@ -80,7 +82,7 @@ export function useProgress() {
       const index = allActivities.findIndex((a) => a.id === id);
       if (index <= 0) return true;
       const previous = allActivities[index - 1];
-      return snapshot.completedActivities.includes(previous.id);
+      return previous ? snapshot.completedActivities.includes(previous.id) : true;
     },
     markStarted: () => write({ ...state, started: true }),
     visit: (id: string) => write({ ...state, lastActivity: id, started: true }),

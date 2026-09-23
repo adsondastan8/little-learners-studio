@@ -352,5 +352,5 @@ export function getModule(id: string): LearningModule | undefined {
 export function nextActivityId(id: string): string | null {
   const index = allActivities.findIndex((a) => a.id === id);
   if (index < 0 || index === allActivities.length - 1) return null;
-  return allActivities[index + 1].id;
+  return allActivities[index + 1]?.id ?? null;
 }
