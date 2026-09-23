@@ -10,33 +10,115 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AtividadesRouteImport } from './routes/atividades'
+import { Route as MateriaisRouteImport } from './routes/materiais'
+import { Route as ProgressoRouteImport } from './routes/progresso'
+import { Route as AtividadeActivityIdRouteImport } from './routes/atividade.$activityId'
+import { Route as ImprimirIndexRouteImport } from './routes/imprimir.index'
+import { Route as ImprimirSheetIdRouteImport } from './routes/imprimir.$sheetId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AtividadesRoute = AtividadesRouteImport.update({
+  id: '/atividades',
+  path: '/atividades',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MateriaisRoute = MateriaisRouteImport.update({
+  id: '/materiais',
+  path: '/materiais',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProgressoRoute = ProgressoRouteImport.update({
+  id: '/progresso',
+  path: '/progresso',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AtividadeActivityIdRoute = AtividadeActivityIdRouteImport.update({
+  id: '/atividade/$activityId',
+  path: '/atividade/$activityId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ImprimirIndexRoute = ImprimirIndexRouteImport.update({
+  id: '/imprimir/',
+  path: '/imprimir/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ImprimirSheetIdRoute = ImprimirSheetIdRouteImport.update({
+  id: '/imprimir/$sheetId',
+  path: '/imprimir/$sheetId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/atividades': typeof AtividadesRoute
+  '/materiais': typeof MateriaisRoute
+  '/progresso': typeof ProgressoRoute
+  '/atividade/$activityId': typeof AtividadeActivityIdRoute
+  '/imprimir/$sheetId': typeof ImprimirSheetIdRoute
+  '/imprimir/': typeof ImprimirIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/atividades': typeof AtividadesRoute
+  '/materiais': typeof MateriaisRoute
+  '/progresso': typeof ProgressoRoute
+  '/atividade/$activityId': typeof AtividadeActivityIdRoute
+  '/imprimir/$sheetId': typeof ImprimirSheetIdRoute
+  '/imprimir': typeof ImprimirIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/atividades': typeof AtividadesRoute
+  '/materiais': typeof MateriaisRoute
+  '/progresso': typeof ProgressoRoute
+  '/atividade/$activityId': typeof AtividadeActivityIdRoute
+  '/imprimir/$sheetId': typeof ImprimirSheetIdRoute
+  '/imprimir/': typeof ImprimirIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/atividades'
+    | '/materiais'
+    | '/progresso'
+    | '/atividade/$activityId'
+    | '/imprimir/$sheetId'
+    | '/imprimir/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/atividades'
+    | '/materiais'
+    | '/progresso'
+    | '/atividade/$activityId'
+    | '/imprimir/$sheetId'
+    | '/imprimir'
+  id:
+    | '__root__'
+    | '/'
+    | '/atividades'
+    | '/materiais'
+    | '/progresso'
+    | '/atividade/$activityId'
+    | '/imprimir/$sheetId'
+    | '/imprimir/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AtividadesRoute: typeof AtividadesRoute
+  MateriaisRoute: typeof MateriaisRoute
+  ProgressoRoute: typeof ProgressoRoute
+  AtividadeActivityIdRoute: typeof AtividadeActivityIdRoute
+  ImprimirSheetIdRoute: typeof ImprimirSheetIdRoute
+  ImprimirIndexRoute: typeof ImprimirIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +130,59 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/atividades': {
+      id: '/atividades'
+      path: '/atividades'
+      fullPath: '/atividades'
+      preLoaderRoute: typeof AtividadesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/materiais': {
+      id: '/materiais'
+      path: '/materiais'
+      fullPath: '/materiais'
+      preLoaderRoute: typeof MateriaisRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/progresso': {
+      id: '/progresso'
+      path: '/progresso'
+      fullPath: '/progresso'
+      preLoaderRoute: typeof ProgressoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/atividade/$activityId': {
+      id: '/atividade/$activityId'
+      path: '/atividade/$activityId'
+      fullPath: '/atividade/$activityId'
+      preLoaderRoute: typeof AtividadeActivityIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/imprimir/': {
+      id: '/imprimir/'
+      path: '/imprimir'
+      fullPath: '/imprimir/'
+      preLoaderRoute: typeof ImprimirIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/imprimir/$sheetId': {
+      id: '/imprimir/$sheetId'
+      path: '/imprimir/$sheetId'
+      fullPath: '/imprimir/$sheetId'
+      preLoaderRoute: typeof ImprimirSheetIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AtividadesRoute: AtividadesRoute,
+  MateriaisRoute: MateriaisRoute,
+  ProgressoRoute: ProgressoRoute,
+  AtividadeActivityIdRoute: AtividadeActivityIdRoute,
+  ImprimirSheetIdRoute: ImprimirSheetIdRoute,
+  ImprimirIndexRoute: ImprimirIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
