@@ -185,7 +185,10 @@ for (let i = 0; i < 30; i += 1) {
   });
 }
 
-export const printables: Printable[] = printCategories.flatMap((category) => [\n  ...basePrintables.filter((item) => item.category === category.id),\n  ...generated.filter((item) => item.category === category.id),\n]);
+export const printables: Printable[] = printCategories.flatMap((category) => [
+  ...basePrintables.filter((item) => item.category === category.id),
+  ...generated.filter((item) => item.category === category.id),
+]);
 
 export function getPrintable(id: string) {
   return printables.find((p) => p.id === id);
