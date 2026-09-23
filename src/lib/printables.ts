@@ -185,7 +185,7 @@ for (let i = 0; i < 30; i += 1) {
   });
 }
 
-export const printables: Printable[] = [...basePrintables, ...generated];
+export const printables: Printable[] = printCategories.flatMap((category) => [\n  ...basePrintables.filter((item) => item.category === category.id),\n  ...generated.filter((item) => item.category === category.id),\n]);
 
 export function getPrintable(id: string) {
   return printables.find((p) => p.id === id);
