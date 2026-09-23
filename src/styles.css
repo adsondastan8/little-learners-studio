@@ -59,6 +59,42 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --color-sun: var(--sun);
+  --color-leaf: var(--leaf);
+  --color-tangerine: var(--tangerine);
+  --color-sky: var(--sky);
+  --font-display: "Baloo 2", system-ui, sans-serif;
+  --font-sans: "Nunito", system-ui, sans-serif;
+  --shadow-soft: 0 6px 20px -12px oklch(0.4 0.09 250 / 0.35);
+  --shadow-lift: 0 16px 36px -16px oklch(0.4 0.09 250 / 0.45);
+  --animate-pop: pop 0.25s ease-out;
+  --animate-bounce-soft: bounce-soft 1.4s ease-in-out infinite;
+}
+
+@theme {
+  --background-image-gradient-brand: linear-gradient(135deg, var(--sky), var(--primary));
+  --background-image-gradient-progress: linear-gradient(90deg, var(--leaf), var(--sun));
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes bounce-soft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
 }
 
 :root {
