@@ -5,7 +5,7 @@ import { modules } from "@/lib/curriculum";
 import { useProgress } from "@/lib/progress";
 
 export const Route = createFileRoute("/atividades")({
-  head: () => ({ meta: [{ title: "Atividades — Aprender Brincando" }, { name: "description", content: "Escolha uma atividade de leitura, escrita ou desenho." }] }),
+  head: () => ({ meta: [{ title: "Atividades — Aprender Brincando" }, { name: "description", content: "Escolha uma atividade de alfabetização." }] }),
   component: ActivitiesPage,
 });
 
@@ -16,8 +16,11 @@ function ActivitiesPage() {
     <AppShell>
       <section className="rounded-3xl bg-primary p-5 text-primary-foreground shadow-soft">
         <p className="text-sm font-bold opacity-90">Escolha uma missão 🎯</p>
-        <h1 className="mt-1 font-display text-3xl font-extrabold">📚 Atividades</h1>
-        <p className="mt-2 text-sm opacity-90">Complete uma atividade para desbloquear a seguinte.</p>
+        <h1 className="mt-1 font-display text-3xl font-extrabold">📚 Atividades de Alfabetização</h1>
+        <p className="mt-2 text-sm opacity-90">Um único módulo com mais de 200 atividades de alfabetização, organizadas para aprender e imprimir.</p>
+        <Link to="/imprimir/alfabetizacao" className="mt-4 flex min-h-12 items-center justify-center gap-2 rounded-2xl bg-white px-4 text-sm font-extrabold text-primary shadow-soft">
+          📥 PDF completo — todas as atividades em várias páginas
+        </Link>
       </section>
 
       <div className="mt-6 space-y-7">
@@ -26,7 +29,12 @@ function ActivitiesPage() {
           return (
             <section key={m.id}>
               <div className="flex items-center justify-between gap-3">
-                <div><h2 className="font-display text-xl font-bold text-foreground"><span aria-hidden>{m.emoji}</span> Módulo {m.order} — {m.title}</h2><p className="mt-1 text-sm text-muted-foreground">{m.description}</p></div>
+                <div>
+                  <h2 className="font-display text-xl font-bold text-foreground">
+                    <span aria-hidden>{m.emoji}</span> Módulo {m.order} — {m.title}
+                  </h2>
+                  <p className="mt-1 text-sm text-muted-foreground">{m.description}</p>
+                </div>
                 <span className="shrink-0 rounded-full bg-primary/10 px-3 py-1 text-xs font-bold text-primary">{done}/{m.activities.length}</span>
               </div>
               <ul className="mt-3 space-y-3">
