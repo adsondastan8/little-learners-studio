@@ -178,3 +178,11 @@
     color: var(--color-foreground);
   }
 }
+
+@media print {
+  body { background: white !important; }
+  .print-break { break-after: page; page-break-after: always; }
+  .print-break:last-child { break-after: auto; page-break-after: auto; }
+  .print-area { margin: 0 !important; }
+  .sheet { box-shadow: none !important; }
+}
