@@ -131,7 +131,7 @@ alphabet.forEach((letter, index) => {
   });
 });
 
-// 60 fichas de traçado de sílabas.
+// 70 fichas de traçado de sílabas.
 syllables.forEach((syllable, index) => {
   generated.push({
     id: `silaba-${syllable.toLowerCase()}-${index + 1}`,
@@ -148,7 +148,7 @@ words.forEach((word, index) => {
   generated.push({
     id: `escrita-palavra-${index + 1}`,
     category: "escrita",
-    title: `Atividade ${index + 87} — Escreva: ${word}`,
+    title: `Atividade ${index + 97} — Escreva: ${word}`,
     description: `Copie a palavra ${word} e pratique a escrita.`,
     kind: "lines",
     letters: [word],
@@ -162,7 +162,7 @@ for (let i = 0; i < 40; i += 1) {
   generated.push({
     id: `leitura-associacao-${i + 1}`,
     category: "leitura",
-    title: `Atividade ${i + 137} — Palavra e imagem ${i + 1}`,
+    title: `Atividade ${i + 147} — Palavra e imagem ${i + 1}`,
     description: "Leia as palavras e ligue cada uma à imagem correta.",
     kind: "match",
     pairs: selected.map(([word, emoji]) => ({ word, emoji })),
@@ -177,7 +177,7 @@ for (let i = 0; i < 30; i += 1) {
   generated.push({
     id: `revisao-alfabetizacao-${i + 1}`,
     category: "revisao",
-    title: `Atividade ${i + 177} — Revisão ${i + 1}`,
+    title: `Atividade ${i + 187} — Revisão ${i + 1}`,
     description: "Revise letras, palavras, escrita e desenho.",
     kind: "review",
     letters: [letter, vowels[i % vowels.length], syllables[i % syllables.length]],
