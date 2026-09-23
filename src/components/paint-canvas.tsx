@@ -7,18 +7,18 @@ const PALETTE = ["#1f3b73", "#e8a13a", "#3f9d5c", "#e2703a", "#c4437f", "#2b2b2b
 
 type Props = {
   /** Letra ou forma desenhada como guia (modo traçado). */
-  guide?: string;
+  guide?: string | undefined;
   /** Mostra linhas de escrita (modo escrita). */
-  lines?: boolean;
+  lines?: boolean | undefined;
   /** Mostra seletor de cores e espessura (modo desenho). */
-  colors?: boolean;
+  colors?: boolean | undefined;
 };
 
 export function PaintCanvas({ guide, lines, colors }: Props) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const strokesRef = useRef<Stroke[]>([]);
   const drawingRef = useRef(false);
-  const [color, setColor] = useState(PALETTE[0]);
+  const [color, setColor] = useState<string>("#1f3b73");
   const [size, setSize] = useState(10);
   const [tick, setTick] = useState(0);
 
@@ -66,8 +66,9 @@ export function PaintCanvas({ guide, lines, colors }: Props) {
       ctx.lineWidth = stroke.size;
       ctx.beginPath();
       stroke.points.forEach((p, i) => (i === 0 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y)));
-      if (stroke.points.length === 1) {
-        ctx.arc(stroke.points[0].x, stroke.points[0].y, stroke.size / 2, 0, Math.PI * 2);
+      const first = stroke.points[0];
+      if (stroke.points.length === 1 && first) {
+        ctx.arc(first.x, first.y, stroke.size / 2, 0, Math.PI * 2);
         ctx.fillStyle = stroke.color;
         ctx.fill();
       }

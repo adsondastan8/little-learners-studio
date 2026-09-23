@@ -8,8 +8,8 @@ const MESSAGES = [
   "Você está avançando!",
 ];
 
-export function celebrationMessage(seed: number) {
-  return MESSAGES[seed % MESSAGES.length];
+export function celebrationMessage(seed: number): string {
+  return MESSAGES[seed % MESSAGES.length] ?? "Muito bem!";
 }
 
 type Props = {
