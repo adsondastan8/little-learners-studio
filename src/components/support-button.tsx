@@ -5,7 +5,7 @@ import { MessageCircle, X } from "lucide-react";
  * Coloque aqui o número de WhatsApp do suporte, com código do país e sem sinais.
  * Exemplo: "258840000000". Deixe vazio se ainda não tiver um número.
  */
-export const WHATSAPP_NUMBER = "";
+export const WHATSAPP_NUMBER = "258864311529";
 
 export function SupportButton() {
   const [open, setOpen] = useState(false);
@@ -29,7 +29,7 @@ export function SupportButton() {
           </div>
           {WHATSAPP_NUMBER ? (
             <a
-              href={`https://wa.me/${WHATSAPP_NUMBER}`}
+              href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("preciso de ajuda")}`}
               target="_blank"
               rel="noreferrer"
               className="mt-4 flex min-h-12 items-center justify-center rounded-2xl bg-leaf text-base font-bold text-white"
