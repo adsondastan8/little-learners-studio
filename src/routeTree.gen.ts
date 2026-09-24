@@ -17,6 +17,7 @@ import { Route as AtividadeActivityIdRouteImport } from './routes/atividade.$act
 import { Route as ImprimirIndexRouteImport } from './routes/imprimir.index'
 import { Route as ImprimirSheetIdRouteImport } from './routes/imprimir.$sheetId'
 import { Route as ImprimirAlfabetizacaoRouteImport } from './routes/imprimir.alfabetizacao'
+import { Route as ImprimirDesenhosAnimadosRouteImport } from './routes/imprimir.desenhos-animados'
 
 const IndexRoute = IndexRouteImport.update({ id: '/', path: '/', getParentRoute: () => rootRouteImport } as any)
 const AtividadesRoute = AtividadesRouteImport.update({ id: '/atividades', path: '/atividades', getParentRoute: () => rootRouteImport } as any)
@@ -26,6 +27,7 @@ const AtividadeActivityIdRoute = AtividadeActivityIdRouteImport.update({ id: '/a
 const ImprimirIndexRoute = ImprimirIndexRouteImport.update({ id: '/imprimir/', path: '/imprimir/', getParentRoute: () => rootRouteImport } as any)
 const ImprimirSheetIdRoute = ImprimirSheetIdRouteImport.update({ id: '/imprimir/$sheetId', path: '/imprimir/$sheetId', getParentRoute: () => rootRouteImport } as any)
 const ImprimirAlfabetizacaoRoute = ImprimirAlfabetizacaoRouteImport.update({ id: '/imprimir/alfabetizacao', path: '/imprimir/alfabetizacao', getParentRoute: () => rootRouteImport } as any)
+const ImprimirDesenhosAnimadosRoute = ImprimirDesenhosAnimadosRouteImport.update({ id: '/imprimir/desenhos-animados', path: '/imprimir/desenhos-animados', getParentRoute: () => rootRouteImport } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -36,6 +38,7 @@ export interface FileRoutesByFullPath {
   '/imprimir/$sheetId': typeof ImprimirSheetIdRoute
   '/imprimir/': typeof ImprimirIndexRoute
   '/imprimir/alfabetizacao': typeof ImprimirAlfabetizacaoRoute
+  '/imprimir/desenhos-animados': typeof ImprimirDesenhosAnimadosRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -46,6 +49,7 @@ export interface FileRoutesByTo {
   '/imprimir/$sheetId': typeof ImprimirSheetIdRoute
   '/imprimir': typeof ImprimirIndexRoute
   '/imprimir/alfabetizacao': typeof ImprimirAlfabetizacaoRoute
+  '/imprimir/desenhos-animados': typeof ImprimirDesenhosAnimadosRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
