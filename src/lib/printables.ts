@@ -9,6 +9,7 @@ export type Printable = {
   letters?: string[];
   words?: string[];
   pairs?: { word: string; emoji: string }[];
+  drawingEmoji?: string;
 };
 
 export const printCategories: { id: PrintCategory; label: string; emoji: string; description: string }[] = [
@@ -189,6 +190,52 @@ export const printables: Printable[] = printCategories.flatMap((category) => [
   ...basePrintables.filter((item) => item.category === category.id),
   ...generated.filter((item) => item.category === category.id),
 ]);
+
+
+
+const cartoonTemplates = [
+  ["🎨", "Pinte o arco-íris", "Pinte o arco-íris com as suas cores favoritas."],
+  ["🦁", "Pinte o leão", "Pinte o leão e a sua grande juba."],
+  ["🐘", "Pinte o elefante", "Pinte o elefante e desenhe um cenário."],
+  ["🦒", "Pinte a girafa", "Pinte as manchas e o corpo da girafa."],
+  ["🐒", "Pinte o macaco", "Pinte o macaco com cores divertidas."],
+  ["🐼", "Pinte o panda", "Pinte o panda e complete o cenário."],
+  ["🐸", "Pinte o sapo", "Pinte o sapo e desenhe folhas."],
+  ["🦋", "Pinte a borboleta", "Crie asas bem coloridas."],
+  ["🐢", "Pinte a tartaruga", "Pinte o casco com as cores que quiser."],
+  ["🐰", "Pinte o coelho", "Pinte o coelho e desenhe flores."],
+  ["🐱", "Pinte o gatinho", "Pinte o gatinho e a sua casa."],
+  ["🐶", "Pinte o cachorrinho", "Pinte o cachorrinho e desenhe a casinha."],
+  ["🚗", "Pinte o carro", "Escolha as cores do carro."],
+  ["🚀", "Pinte o foguete", "Pinte o foguete e desenhe estrelas."],
+  ["🏰", "Pinte o castelo", "Pinte o castelo e crie um céu."],
+  ["🧙", "Pinte o personagem mágico", "Pinte a roupa e o chapéu."],
+  ["🦸", "Pinte o super-herói", "Crie um uniforme bem colorido."],
+  ["🧚", "Pinte a fada", "Pinte as asas e o jardim mágico."],
+  ["🐉", "Pinte o dragão", "Escolha as cores do dragão."],
+  ["🦄", "Pinte o unicórnio", "Crie um unicórnio cheio de cores."],
+  ["🌈", "Crie um mundo colorido", "Pinte o cenário e acrescente desenhos."],
+  ["⭐", "Pinte as estrelas", "Pinte estrelas de vários tamanhos e cores."],
+  ["🎭", "Crie uma máscara", "Pinte e decore uma máscara."],
+  ["🧩", "Complete e pinte", "Complete o desenho e depois pinte."],
+  ["✂️", "Recorte e decore", "Pinte, recorte com ajuda de um adulto e decore."],
+  ["🔎", "Encontre e pinte", "Encontre os elementos e pinte-os."],
+  ["🖍️", "Desenho livre", "Desenhe e pinte o seu personagem favorito."],
+  ["☁️", "Crie um cenário", "Pinte o céu e invente um cenário."],
+  ["🎨", "Mistura de cores", "Use uma combinação diferente em cada espaço."],
+  ["🎉", "Festa dos personagens", "Pinte os personagens e decore a festa."],
+] as const;
+
+export const cartoonPrintables: Printable[] = cartoonTemplates.map(
+  ([emoji, title, description], index) => ({
+    id: `desenho-animado-print-${index + 1}`,
+    category: "desenho",
+    title: `Desenhos Animados — ${index + 1}: ${title}`,
+    description,
+    kind: "draw",
+    drawingEmoji: emoji,
+  }),
+);
 
 export function getPrintable(id: string) {
   return printables.find((p) => p.id === id);
