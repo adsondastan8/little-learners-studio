@@ -62,9 +62,15 @@ export function PrintableSheet({ item }: { item: Printable }) {
 
       {item.kind === "draw" ? (
         <section className="avoid-break">
-          <h2 className="mb-4 text-lg font-semibold">Desenhe e pinte</h2>
-          <div className="h-[520px] w-full rounded-lg border-2 border-black/60" />
-          <p className="mt-4 text-base">Conte o que desenhou: ____________________________</p>
+          <h2 className="mb-4 text-lg font-semibold">{item.drawingEmoji ? "Pinte o desenho" : "Desenhe e pinte"}</h2>
+          {item.drawingEmoji ? (
+            <div className="mb-5 rounded-2xl border-2 border-black/50 p-6 text-center">
+              <div className="text-[9rem] leading-none grayscale">{item.drawingEmoji}</div>
+              <p className="mt-4 text-lg font-semibold">{item.description}</p>
+            </div>
+          ) : null}
+          <div className="h-[420px] w-full rounded-lg border-2 border-black/60" />
+          <p className="mt-4 text-base">Nome do desenho: ____________________________</p>
         </section>
       ) : null}
 
