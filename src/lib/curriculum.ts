@@ -96,7 +96,7 @@ const desenhosAnimados: Activity[] = [
   ["☁️","Crie um cenário","Pinte o céu e invente um cenário para os personagens."],
   ["🎨","Mistura de cores","Pinte cada espaço usando uma combinação de cores diferente."],
   ["🎉","Festa dos personagens","Pinte os personagens e decore o espaço da festa."],
-].map(([emoji,title,description], index) => ({
+].map(([emoji, title, description], index): Activity => ({
   id: `desenho-animado-${index + 1}`,
   moduleId: "desenhos-animados", title: `${emoji} ${title}`, description,
   type: "drawing", printable: true,
