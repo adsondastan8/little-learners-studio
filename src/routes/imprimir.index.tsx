@@ -23,13 +23,19 @@ function PrintLibrary() {
         <p className="mt-2 text-sm text-muted-foreground">As {printables.length} atividades ficam organizadas por tema e em páginas separadas, prontas para imprimir.</p>
         <Link to="/imprimir/alfabetizacao" className="mt-4 flex min-h-14 items-center justify-center rounded-2xl bg-primary text-base font-bold text-primary-foreground">📥 Baixar PDF completo</Link>
       </section>
-      <div className="mt-6 space-y-8">
-        {printCategories.map((cat) => {
-          const items = printables.filter((p) => p.category === cat.id);
-          if (!items.length) return null;
-          return <section key={cat.id}><h2 className="font-display text-xl font-bold text-foreground"><span aria-hidden>{cat.emoji}</span> {cat.label}</h2><p className="mt-1 text-sm text-muted-foreground">{cat.description}</p><ul className="mt-3 grid gap-3 sm:grid-cols-2">{items.map((item) => <li key={item.id} className="rounded-3xl border border-border bg-card p-5 shadow-soft"><h3 className="font-display text-base font-bold text-foreground">{item.title}</h3><p className="mt-1 text-sm text-muted-foreground">{item.description}</p><div className="mt-4 grid gap-2 sm:grid-cols-2"><Link to="/imprimir/$sheetId" params={{ sheetId: item.id }} className="flex min-h-12 items-center justify-center rounded-2xl bg-primary font-bold text-primary-foreground">Ver ficha</Link><Link to="/imprimir/$sheetId" params={{ sheetId: item.id }} search={{ print: true }} className="flex min-h-12 items-center justify-center gap-2 rounded-2xl border-2 border-border bg-card font-semibold text-foreground"><Printer className="h-5 w-5" aria-hidden /> Baixar PDF</Link></div></li>)}</ul></section>;
-        })}
-      </div>
+      <section className="mt-6 rounded-3xl border-2 border-primary/20 bg-card p-6 shadow-soft">
+        <p className="text-sm font-bold text-primary">📘 Alfabetização completa</p>
+        <h2 className="mt-1 font-display text-2xl font-extrabold text-foreground">224 atividades para imprimir</h2>
+        <p className="mt-2 text-sm text-muted-foreground">
+          Todas as fichas de alfabetização estão reunidas num único PDF, organizadas em várias páginas.
+        </p>
+        <Link
+          to="/imprimir/alfabetizacao"
+          className="mt-5 flex min-h-14 w-full items-center justify-center rounded-2xl bg-primary text-base font-bold text-primary-foreground"
+        >
+          📥 Baixar PDF completo
+        </Link>
+      </section>
     </AppShell>
   );
 }
