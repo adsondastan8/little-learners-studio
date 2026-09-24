@@ -1,7 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Printer } from "lucide-react";
 import { AppShell } from "@/components/app-shell";
-import { printCategories, printables } from "@/lib/printables";
+import { printables } from "@/lib/printables";
 
 export const Route = createFileRoute("/imprimir/")({
   head: () => ({ meta: [{ title: "Biblioteca para imprimir — Aprender Brincando" }, { name: "description", content: "Fichas A4 de letras, escrita, leitura, desenho e revisão." }] }),
@@ -29,6 +28,7 @@ function PrintLibrary() {
         >
           📥 Baixar PDF completo
         </Link>
+      </section>
 
       <section className="mt-6 rounded-3xl border-2 border-amber-300/70 bg-amber-50/70 p-6 shadow-soft">
         <p className="text-sm font-bold text-amber-700">🎨 Desenhos Animados</p>
@@ -40,7 +40,6 @@ function PrintLibrary() {
         >
           📥 Imprimir desenhos
         </Link>
-      </section>
       </section>
     </AppShell>
   );
