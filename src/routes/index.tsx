@@ -103,18 +103,38 @@ function HomePage() {
 
       <section className="mt-7">
         <div className="flex items-end justify-between">
-          <div><h2 className="font-display text-2xl font-bold text-foreground">Módulos</h2><p className="text-sm text-muted-foreground">Escolha por onde começar.</p></div>
-          <Link to="/atividades" className="text-sm font-bold text-primary">Ver todos</Link>
+          <div><h2 className="font-display text-2xl font-bold text-foreground">Módulo 1 — Alfabetização</h2><p className="text-sm text-muted-foreground">Aprenda letras, sílabas, escrita e leitura.</p></div>
+          <Link to="/atividades" className="text-sm font-bold text-primary">Abrir módulo</Link>
         </div>
-        <div className="mt-4 grid gap-3 sm:grid-cols-2">
-          {modules.map((m) => {
+        <div className="mt-4">
+          {modules.filter((m) => m.id === "alfabetizacao").map((m) => {
             const done = m.activities.filter((a) => progress.isCompleted(a.id)).length;
             return (
-              <Link key={m.id} to="/atividades" className="rounded-3xl border border-border bg-card p-5 shadow-soft transition-transform hover:-translate-y-0.5 active:scale-[0.99]">
+              <Link key={m.id} to="/atividades" className="block rounded-3xl border-2 border-primary/20 bg-card p-5 shadow-soft transition-transform hover:-translate-y-0.5 active:scale-[0.99]">
                 <span className="text-3xl" aria-hidden>{m.emoji}</span>
-                <h3 className="mt-3 font-display text-lg font-bold text-foreground">Módulo {m.order} — {m.title}</h3>
+                <h3 className="mt-3 font-display text-xl font-extrabold text-foreground">{m.title}</h3>
                 <p className="mt-1 text-sm text-muted-foreground">{m.description}</p>
                 <p className="mt-3 text-sm font-bold text-primary">{done} de {m.activities.length} concluídas</p>
+              </Link>
+            );
+          })}
+        </div>
+      </section>
+
+      <section className="mt-7 rounded-3xl border-2 border-amber-300/60 bg-amber-50/70 p-5 shadow-soft">
+        <div className="flex items-end justify-between gap-3">
+          <div><h2 className="font-display text-2xl font-bold text-foreground">Módulo 2 — Desenhos Animados</h2><p className="text-sm text-muted-foreground">Pinte, desenhe, complete e crie.</p></div>
+          <Link to="/atividades" className="text-sm font-bold text-amber-700">Abrir módulo</Link>
+        </div>
+        <div className="mt-4">
+          {modules.filter((m) => m.id === "desenhos-animados").map((m) => {
+            const done = m.activities.filter((a) => progress.isCompleted(a.id)).length;
+            return (
+              <Link key={m.id} to="/atividades" className="block rounded-3xl border-2 border-amber-300/70 bg-card p-5 transition-transform hover:-translate-y-0.5 active:scale-[0.99]">
+                <span className="text-4xl" aria-hidden>{m.emoji}</span>
+                <h3 className="mt-3 font-display text-xl font-extrabold text-foreground">{m.title}</h3>
+                <p className="mt-1 text-sm text-muted-foreground">{m.description}</p>
+                <p className="mt-3 text-sm font-bold text-amber-700">{done} de {m.activities.length} concluídas</p>
               </Link>
             );
           })}
