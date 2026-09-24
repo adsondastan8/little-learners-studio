@@ -70,6 +70,7 @@ export function useProgress() {
   }, []);
 
   const total = allActivities.length;
+  const moduleActivities = (moduleId: string) => allActivities.filter((a) => a.moduleId === moduleId);
   const done = snapshot.completedActivities.length;
 
   return {
@@ -79,9 +80,12 @@ export function useProgress() {
     percent: total === 0 ? 0 : Math.round((done / total) * 100),
     isCompleted: (id: string) => snapshot.completedActivities.includes(id),
     isUnlocked: (id: string) => {
-      const index = allActivities.findIndex((a) => a.id === id);
+      const activity = allActivities.find((a) => a.id === id);
+      if (!activity) return false;
+      const activities = moduleActivities(activity.moduleId);
+      const index = activities.findIndex((a) => a.id === id);
       if (index <= 0) return true;
-      const previous = allActivities[index - 1];
+      const previous = activities[index - 1];
       return previous ? snapshot.completedActivities.includes(previous.id) : true;
     },
     markStarted: () => write({ ...state, started: true }),
