@@ -29,6 +29,18 @@ function PrintLibrary() {
         >
           📥 Baixar PDF completo
         </Link>
+
+      <section className="mt-6 rounded-3xl border-2 border-amber-300/70 bg-amber-50/70 p-6 shadow-soft">
+        <p className="text-sm font-bold text-amber-700">🎨 Desenhos Animados</p>
+        <h2 className="mt-1 font-display text-2xl font-extrabold text-foreground">30 desenhos para pintar</h2>
+        <p className="mt-2 text-sm text-muted-foreground">Páginas de animais, personagens, veículos, cenários e atividades criativas.</p>
+        <Link
+          to="/imprimir/desenhos-animados"
+          className="mt-5 flex min-h-14 w-full items-center justify-center rounded-2xl bg-primary text-base font-bold text-primary-foreground"
+        >
+          📥 Imprimir desenhos
+        </Link>
+      </section>
       </section>
     </AppShell>
   );
