@@ -73,7 +73,14 @@ function ActivityPage() {
           {activity.type === "drawing" ? <div className="space-y-4"><PaintCanvas colors /><button type="button" onClick={finish} className="flex min-h-14 w-full items-center justify-center gap-2 rounded-2xl bg-primary text-lg font-bold text-primary-foreground"><Check className="h-5 w-5" aria-hidden /> Concluir desenho</button></div> : null}
 
           {completed ? <p className="flex items-center justify-center gap-2 rounded-2xl bg-leaf/15 py-3 font-bold text-leaf"><Check className="h-5 w-5" aria-hidden /> Atividade concluída</p> : null}
-          {activity.printable ? <Link to="/imprimir" className="flex min-h-12 items-center justify-center gap-2 rounded-2xl border-2 border-border bg-card font-semibold text-foreground"><Printer className="h-5 w-5" aria-hidden /> Ver ficha para imprimir</Link> : null}
+          {activity.printable ? (
+            <Link
+              to={activity.moduleId === "desenhos-animados" ? "/imprimir/desenhos-animados" : "/imprimir"}
+              className="flex min-h-12 items-center justify-center gap-2 rounded-2xl border-2 border-border bg-card font-semibold text-foreground"
+            >
+              <Printer className="h-5 w-5" aria-hidden /> Ver fichas para imprimir
+            </Link>
+          ) : null}
         </section>
       )}
 
