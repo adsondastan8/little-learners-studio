@@ -17,12 +17,6 @@ function PrintLibrary() {
         <p className="mt-2 text-sm opacity-90">Temos <strong>{printables.length} fichas de alfabetização</strong> para abrir, imprimir ou guardar como PDF.</p>
       </section>
 
-      <section className="mt-6 rounded-3xl border-2 border-primary/20 bg-card p-5 shadow-soft">
-        <p className="text-sm font-bold text-primary">📘 Alfabetização completa</p>
-        <h2 className="mt-1 font-display text-2xl font-extrabold text-foreground">Um único PDF com todas as fichas</h2>
-        <p className="mt-2 text-sm text-muted-foreground">As {printables.length} atividades ficam organizadas por tema e em páginas separadas, prontas para imprimir.</p>
-        <Link to="/imprimir/alfabetizacao" className="mt-4 flex min-h-14 items-center justify-center rounded-2xl bg-primary text-base font-bold text-primary-foreground">📥 Baixar PDF completo</Link>
-      </section>
       <section className="mt-6 rounded-3xl border-2 border-primary/20 bg-card p-6 shadow-soft">
         <p className="text-sm font-bold text-primary">📘 Alfabetização completa</p>
         <h2 className="mt-1 font-display text-2xl font-extrabold text-foreground">224 atividades para imprimir</h2>
