@@ -23,21 +23,30 @@ function ActivitiesPage() {
         </Link>
       </section>
 
-      <div className="mt-6 space-y-7">
+      <div className="mt-6 space-y-8">
         {modules.map((m) => {
           const done = m.activities.filter((a) => progress.isCompleted(a.id)).length;
+          const isDrawingModule = m.id === "desenhos-animados";
           return (
-            <section key={m.id}>
-              <div className="flex items-center justify-between gap-3">
+            <section
+              key={m.id}
+              className={isDrawingModule
+                ? "rounded-3xl border-2 border-amber-300/60 bg-amber-50/70 p-4 shadow-soft"
+                : "rounded-3xl border-2 border-primary/20 bg-card p-4 shadow-soft"}
+            >
+              <div className="flex items-start justify-between gap-3">
                 <div>
-                  <h2 className="font-display text-xl font-bold text-foreground">
-                    <span aria-hidden>{m.emoji}</span> Módulo {m.order} — {m.title}
+                  <p className={isDrawingModule ? "text-xs font-extrabold uppercase tracking-wide text-amber-700" : "text-xs font-extrabold uppercase tracking-wide text-primary"}>
+                    Módulo {m.order}
+                  </p>
+                  <h2 className="mt-1 font-display text-2xl font-extrabold text-foreground">
+                    <span aria-hidden>{m.emoji}</span> {m.title}
                   </h2>
                   <p className="mt-1 text-sm text-muted-foreground">{m.description}</p>
                 </div>
                 <span className="shrink-0 rounded-full bg-primary/10 px-3 py-1 text-xs font-bold text-primary">{done}/{m.activities.length}</span>
               </div>
-              <ul className="mt-3 space-y-3">
+              <ul className="mt-4 space-y-3">
                 {m.activities.map((a, index) => {
                   const completed = progress.isCompleted(a.id);
                   const unlocked = progress.isUnlocked(a.id);
